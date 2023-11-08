@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct58dqm7odekg"]
+[gd_scene load_steps=15 format=3 uid="uid://ct58dqm7odekg"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_qadib"]
+[ext_resource type="ArrayMesh" uid="uid://yvjusda18w01" path="res://Assets/shotgun.obj" id="2_1ot8u"]
 
 [sub_resource type="Environment" id="Environment_urmnl"]
 background_mode = 2
@@ -13,6 +16,29 @@ albedo_color = Color(0, 0.188235, 0, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hlo37"]
 data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7gocx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83eft"]
+size = Vector3(0.8, 0.2, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dffjb"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xx36b"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agtid"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3knlh"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hy1q"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6jx8"]
+albedo_color = Color(0.133333, 0.133333, 0.133333, 0.133333)
 
 [node name="Game" type="Node3D"]
 
@@ -30,3 +56,57 @@ surface_material_override/0 = SubResource("StandardMaterial3D_geixs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_hlo37")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_qadib")
+
+[node name="Body" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("CapsuleShape3D_7gocx")
+
+[node name="Feet" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("BoxShape3D_83eft")
+
+[node name="Pivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
+current = true
+
+[node name="Gun" type="MeshInstance3D" parent="Player/Pivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.4, -0.2, -0.4)
+mesh = ExtResource("2_1ot8u")
+surface_material_override/0 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/1 = SubResource("StandardMaterial3D_xx36b")
+surface_material_override/2 = SubResource("StandardMaterial3D_agtid")
+surface_material_override/3 = SubResource("StandardMaterial3D_3knlh")
+surface_material_override/4 = SubResource("StandardMaterial3D_0hy1q")
+surface_material_override/5 = SubResource("StandardMaterial3D_g6jx8")
+surface_material_override/6 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/7 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/8 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/9 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/10 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/11 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/12 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/13 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/14 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/15 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/16 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/17 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/18 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/19 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/20 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/21 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/22 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/23 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/24 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/25 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/26 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/27 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/28 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/29 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/30 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/31 = SubResource("StandardMaterial3D_dffjb")
+surface_material_override/32 = SubResource("StandardMaterial3D_dffjb")
